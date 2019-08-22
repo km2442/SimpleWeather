@@ -1,5 +1,19 @@
 <template>
   <div>
+    <div class="mx-3 mt-3 mb-0">
+      <v-progress-linear
+      :value="how * 10"
+      color="light-green darken-4"
+      height="25"
+      striped
+      rounded
+      dark
+    >
+      <template v-slot="{ value }">
+        <strong>Ilość miast: {{ how }}/10</strong>
+      </template>
+    </v-progress-linear>
+    </div>
     <v-container fluid>
       <transition-group
         enter-active-class="animated zoomIn"
