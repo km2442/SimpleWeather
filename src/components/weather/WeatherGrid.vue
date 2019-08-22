@@ -1,13 +1,24 @@
 <template>
   <div>
     <v-container fluid>
-      <v-layout row wrap justify-space-around class="ma-3">
-        <v-flex xs12 md6 class="pa-2">
+      <transition-group
+        enter-active-class="animated zoomIn"
+        leave-active-class="animated zoomOut"
+        tag="v-layout"
+        class="ma-3 row wrap justify-space-around"
+      >
+        <template v-for="(i, index) in how">
+          <v-flex xs12 md6 :key="indexes[index]" class="pa-2">
+            <widget></widget>
+          </v-flex>
+        </template>
+
+        <v-flex xs12 md6 class="pa-2" key="addTown" v-if="how < 10">
           <v-hover v-slot:default="{ hover }">
             <v-card
-              @click.native="add = false"
+              @click.native="how++"
               style="cursor: pointer"
-              class="add pa-5"
+              class="add pa-2"
               :class="{'animated pulse infinite slow': hover}"
             >
               <v-container>
@@ -23,7 +34,7 @@
             </v-card>
           </v-hover>
         </v-flex>
-      </v-layout>
+      </transition-group>
     </v-container>
   </div>
 </template>
@@ -31,11 +42,13 @@
 <script>
 export default {
   components: {
-    //widget: () => import(/* webpackChunkName: "Index" */ './Widget')
+    widget: () => import(/* webpackChunkName: "Index" */ "./Widget")
   },
   data: () => {
     return {
-      add: true
+      add: true,
+      how: 0,
+      indexes: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
     };
   }
 };
