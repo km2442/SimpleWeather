@@ -2,18 +2,18 @@
   <div>
     <v-container fluid>
       <v-layout row wrap justify-space-around class="ma-3">
-        <v-flex xs12 md6 class="px-2">
-          <v-card class="add pa-5">
-            <h1>Dodaj miasto</h1>
-            <h2>Ładne</h2>
-            <h3>Piękne</h3>
-          </v-card>
-        </v-flex>
-        <v-flex xs12 md6 class="px-2">
-          <v-card class="add pa-5">
-            <h1>Dodaj miasto</h1>
-            <h2>Ładne</h2>
-            <h3>Piękne</h3>
+        <v-flex xs12 md6 class="pa-2">
+          <v-card class="add pa-5" @click.native="add = false" style="cursor: pointer">
+            <v-container>
+              <v-layout justify-center align-center>
+                <v-flex xs2>
+                  <v-icon large right class="display-3">mdi-plus</v-icon>
+                </v-flex>
+                <v-flex xs10>
+                  <v-row justify="center" class="display-2">Dodaj miasto</v-row>
+                </v-flex>
+              </v-layout>
+            </v-container>
           </v-card>
         </v-flex>
       </v-layout>
@@ -25,10 +25,12 @@
 export default {
   components: {
     //widget: () => import(/* webpackChunkName: "Index" */ './Widget')
+  },
+  data: () => {
+    return {
+      add: true
+    }
   }
-  // data: () => {
-  //     widgets: []
-  // }
 };
 </script>
 
